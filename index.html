@@ -88,8 +88,9 @@
     ---------------------------------- */
     .productos{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
       gap:2rem;
+      align-items:start;
     }
     .producto{
       background:var(--gris-suave);
@@ -198,6 +199,62 @@
       .brand h1{font-size:1.6rem}
       main{padding:1.5rem}
     }
+    /* Imágenes de producto en grid 2x2 si hay 4 imágenes */
+    .producto .img-grid-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-bottom: 0.5em;
+    }
+    .producto .img-grid-2x2 img,
+    .producto img {
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: box-shadow .2s;
+    }
+    .producto .img-grid-2x2 img:hover,
+    .producto img:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity .2s;
+    }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 10px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+      background: #fff;
+      padding: 0.5em;
+      display: block;
+    }
+    .lightbox-overlay[hidden] { display: none; }
+    .lightbox-close {
+      position: absolute;
+      top: 32px;
+      right: 48px;
+      font-size: 2.5rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10001;
+      line-height: 1;
+    }
+    @media(max-width:600px){
+      .producto .img-grid-2x2 { grid-template-columns: 1fr; }
+      .lightbox-img { max-width: 98vw; max-height: 70vh; }
+      .lightbox-close { right: 16px; top: 16px; font-size: 2rem; }
+    }
   </style>
 </head>
 
@@ -248,15 +305,15 @@
             <img src="assets/perro1.jpg" alt="Perro articulado 1" style="width:48%;border-radius:4px">
             <img src="assets/perro2.jpg" alt="Perro articulado 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 35 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 35 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#222;color:#fff">+5</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <!-- === Tarjeta 3 === -->
@@ -266,16 +323,16 @@
             <img src="assets/gato1.jpg" alt="Gato articulado 1" style="width:48%;border-radius:4px">
             <img src="assets/gato2.jpg" alt="Gato articulado 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 20 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 20 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#222;color:#fff">+5</span>
                 <span class="color-circle" style="background:#fff;color:#222">1</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <!-- === Tarjeta 4 === -->
@@ -285,15 +342,15 @@
             <img src="assets/tiburon1.jpg" alt="Tiburón articulado 1" style="width:48%;border-radius:4px">
             <img src="assets/tiburon2.jpg" alt="Tiburón articulado 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 25 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 25 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#bbb;color:#222">+5</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <!-- === Tarjeta 5 === -->
@@ -303,15 +360,15 @@
             <img src="assets/bluey1.jpg" alt="Bluey articulado 1" style="width:48%;border-radius:4px">
             <img src="assets/bluey2.jpg" alt="Bluey articulado 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 35 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 35 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#7FDBFF;color:#222">1</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <!-- === Tarjeta 6 === -->
@@ -321,32 +378,33 @@
             <img src="assets/repo1.jpg" alt="Repuesto 1" style="width:48%;border-radius:4px">
             <img src="assets/repo2.jpg" alt="Repuesto 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 30 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 30 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#FFD600;color:#222">4</span>
                 <span class="color-circle" style="background:#E53935;color:#fff">3</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
+        
         <div class="producto">
           <h3>Pasador gótico</h3>
           <div style="display:flex;gap:.5rem">
             <img src="assets/pasador2.jpeg" alt="Pasador gótico 2" style="width:48%;border-radius:4px">
             <img src="assets/pasador3.jpeg" alt="Pasador gótico 3" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 35 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 35 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#fff;color:#222">4</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <div class="producto">
@@ -355,15 +413,15 @@
             <img src="assets/pasadorflorcalavera.jpeg" alt="Pasador flor con calavera" style="width:48%;border-radius:4px">
             <img src="assets/pasadorflorcalavera2.jpeg" alt="Pasador flor con calavera 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 35 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 35 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
-                <span class="color-circle" style="background:#fff;color:#222">2</span>
+                <span class="color-circle" style="background:#fff;color:#222">1</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <div class="producto">
@@ -372,34 +430,57 @@
             <img src="assets/chain1.jpg" alt="Cadena articulada 1" style="width:48%;border-radius:4px">
             <img src="assets/chain2.jpg" alt="Cadena articulada 2" style="width:48%;border-radius:4px">
           </div>
-          <ul>
-            <li>Precio: 20 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div>
+            <div>Precio: 20 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#222;color:#fff">+5</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
 
         <!-- === Tarjeta de Toallín (ahora al final y agotado) === -->
         <div class="producto">
           <h3>Toallín</h3>
-          <div style="display:flex;gap:.5rem">
-            <img src="assets/toalla1.jpg" alt="Toallín 1" style="width:48%;border-radius:4px">
-            <img src="assets/toalla3.jpg" alt="Toallín 3" style="width:48%;border-radius:4px">
+          <div class="img-grid-2x2">
+            <img src="assets/toalla1.jpg" alt="Toallín 1">
+            <img src="assets/toalla2.jpg" alt="Toallín 2">
+            <img src="assets/toalla3.jpg" alt="Toallín 3">
+            <img src="assets/toalla4.jpg" alt="Toallín 4">
           </div>
-          <div style="margin-top:0.5em;color:#E85D04;font-weight:600;text-align:center;">AGOTADO <span style="color:#222;font-weight:400;font-size:0.95em;"><hr>(se puede hacer a pedido)</span></div>
-          <ul>
-            <li>Precio: 40 Bs</li>
-            <li style="display:flex;align-items:center;gap:.5em">
+          <div style="margin-top:0.5em;color:#E85D04;font-weight:600;text-align:center;">AGOTADO <span style="color:#222;font-weight:400;font-size:0.95em;"><br>(se puede hacer a pedido)</span></div>
+          <div>
+            <div>Precio: 40 Bs</div>
+            <div style="display:flex;align-items:center;gap:.5em">
               <span style="font-size:.95em;min-width:80px">Existencias:</span>
               <div class="color-circles">
                 <span class="color-circle" style="background:#0074D9;color:#fff;opacity:0.4;">0</span>
               </div>
-            </li>
-          </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- === Nuevo producto: Porta vasos mano de calavera === -->
+        <div class="producto">
+          <h3>Porta vasos mano de calavera</h3>
+          <div class="img-grid-2x2">
+            <img src="assets/mano1.jpeg" alt="Porta vasos mano de calavera 1">
+            <img src="assets/mano2.jpeg" alt="Porta vasos mano de calavera 2">
+            <img src="assets/mano3.jpeg" alt="Porta vasos mano de calavera 3">
+            <img src="assets/mano4.jpeg" alt="Porta vasos mano de calavera 4">
+          </div>
+          <div style="margin-top:0.5em;color:#E85D04;font-weight:600;text-align:center;">AGOTADO <span style="color:#222;font-weight:400;font-size:0.95em;"><br>(se puede hacer a pedido)</span></div>
+          <div>
+            <div>Precio: 60 Bs.</div>
+            <div style="display:flex;align-items:center;gap:.5em">
+              <span style="font-size:.95em;min-width:80px">Existencias:</span>
+              <div class="color-circles">
+                <span class="color-circle" style="background:#222;color:#fff;opacity:0.4;">0</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -411,14 +492,14 @@
     <a href="https://wa.me/59168847444" target="_blank" rel="noopener">+591 68847444</a> 
     (Joaquín Mancilla, creador de la página web)
   </p>
-  <p>Entregas disponibles por las tardes en estaciones de teleférico y plazas, consulte al número.</p>
+  <p>Entregas disponibles los martes, jueves y sabados por las tardes en estaciones de teleférico y plazas.</p>
+  <p>Consulte al número.</p>
   <p>El precio de envio varia de 5 a 10 Bs. depende si es en La Paz o El Alto (Para el alto solo se entrega en teleferico morado o rojo)</p>
   <hr>
   <p><strong>Cotización gratuita para nuevos diseños:</strong> 
     <a href="https://wa.me/59169707171" target="_blank" rel="noopener">+591 69707171</a> 
     (Ing. Alfredo Mancilla, dueño de Whisker Works 3D)
   </p>
-  
   <p>Ubicación: La Paz, zona Obrajes.</p>
   <p><strong>Envíos a otros departamentos:</strong> disponibilidad y costos a confirmar vía WhatsApp.</p>
 </section>
@@ -437,5 +518,32 @@
       <path d="M23.472 19.339c-.397-.199-2.35-1.158-2.713-1.29-.363-.133-.627-.199-.892.199-.264.398-1.022 1.29-1.253 1.555-.231.265-.463.298-.86.099-.397-.199-1.678-.619-3.198-1.974-1.182-1.055-1.98-2.36-2.213-2.758-.231-.398-.025-.613.174-.812.179-.178.398-.463.596-.694.199-.231.265-.398.398-.663.133-.265.066-.497-.033-.696-.099-.199-.892-2.155-1.221-2.951-.322-.773-.649-.668-.892-.68-.231-.01-.497-.012-.763-.012-.265 0-.696.099-1.06.497-.363.398-1.39 1.357-1.39 3.312 0 1.955 1.424 3.844 1.623 4.112.199.265 2.803 4.282 6.793 5.837.951.327 1.693.522 2.272.668.955.229 1.825.197 2.513.12.767-.085 2.35-.96 2.683-1.887.331-.927.331-1.721.231-1.887-.099-.166-.363-.265-.76-.464z" fill="#fff"/>
     </svg>
   </a>
+  <!-- ========= LIGHTBOX ========= -->
+  <div id="lightbox-overlay" class="lightbox-overlay" hidden>
+    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="Imagen ampliada">
+  </div>
+  <script>
+    // Lightbox para todas las imágenes de productos
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.producto img').forEach(img => {
+        img.addEventListener('click', function() {
+          const overlay = document.getElementById('lightbox-overlay');
+          const lightboxImg = document.getElementById('lightbox-img');
+          lightboxImg.src = this.src;
+          lightboxImg.alt = this.alt;
+          overlay.hidden = false;
+        });
+      });
+      
+      document.querySelector('.lightbox-close').onclick = function() {
+        document.getElementById('lightbox-overlay').hidden = true;
+      };
+      
+      document.getElementById('lightbox-overlay').onclick = function(e) {
+        if(e.target === this) this.hidden = true;
+      };
+    });
+  </script>
 </body>
 </html>
