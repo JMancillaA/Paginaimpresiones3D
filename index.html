@@ -31,13 +31,14 @@
     }
     a{color:var(--primario);text-decoration:none;font-weight:500}
     a:hover{color:var(--secundario)}
+
     /* ----------------------------------
        HEADER
     ---------------------------------- */
     header{
       background:#000;
       color:var(--primario);
-      padding:2rem 1rem;
+      padding:2rem 1rem 1rem;
       border-bottom:4px solid var(--primario);
       text-align:center;
     }
@@ -61,6 +62,36 @@
       -webkit-background-clip:text;
       color:transparent;
     }
+
+    /* NAVBAR */
+    .navbar{
+      margin-top:1rem;
+      display:flex;
+      justify-content:center;
+      gap:2rem;
+      flex-wrap:wrap;
+    }
+    .navbar a{
+      color:#fff;
+      font-weight:600;
+      letter-spacing:.03em;
+      position:relative;
+      padding-bottom:.2rem;
+    }
+    .navbar a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:0;
+      height:2px;
+      background:var(--primario);
+      transition:width .25s;
+    }
+    .navbar a:hover::after{
+      width:100%;
+    }
+
     /* ----------------------------------
        MAIN CONTAINER
     ---------------------------------- */
@@ -80,6 +111,7 @@
       margin-bottom:1rem;
       border-bottom:2px solid var(--gris-suave);
       padding-bottom:.5rem;
+      text-align: center;
     }
     h3{color:var(--secundario);margin-top:.5rem}
 
@@ -268,12 +300,24 @@
         <p>SERVICIO DE IMPRESIÓN 3D</p>
       </div>
     </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="contacto.html#contacto">Contacto</a>
+      <a href="https://makerworld.com" target="_blank" rel="noopener">MakerWorld</a>
+      <a href="https://cults3d.com" target="_blank" rel="noopener">Cults 3D</a>
+    </nav>
   </header>
 
-  <main>
+  <main id="inicio">
     <section>
       <h2>¿Qué ofrecemos?</h2>
       <p>Realizamos impresiones 3D a pedido: piezas funcionales, prototipos, figuras, repuestos y más. Materiales de calidad y asesoría personalizada.</p>
+      <p>
+        <strong>Importante:</strong> si el modelo 3D elegido es de pago (por ejemplo, descargado de plataformas como MakerWorld o Cults 3D), 
+        el costo del archivo se añade al precio final del trabajo de impresión.
+      </p>
       <p>
         Síguenos:<br>
         <a href="https://www.facebook.com/profile.php?id=100083004056831" title="Facebook" target="_blank" rel="noopener" class="rrss-link">
@@ -316,18 +360,7 @@
             <div>Precio: 20 Bs</div>
           </div>
         </div>
-
-        <div class="producto">
-          <h3>Tiburón articulado</h3>
-          <div style="display:flex;gap:.5rem">
-            <img src="assets/tiburon1.jpg" alt="Tiburón articulado 1" style="width:48%;border-radius:4px">
-            <img src="assets/tiburon2.jpg" alt="Tiburón articulado 2" style="width:48%;border-radius:4px">
-          </div>
-          <div>
-            <div>Precio: 25 Bs</div>
-          </div>
-        </div>
-
+        
         <div class="producto">
           <h3>Bluey</h3>
           <div style="display:flex;gap:.5rem">
@@ -386,7 +419,7 @@
         <div class="producto">
           <h3>Cubone</h3>
           <div class="img-grid-2x2">
-            <img src="assets/cubone1.jpg" alt="Cubine 1">
+            <img src="assets/cubone1.jpg" alt="Cubone 1">
             <img src="assets/cubone1.jpg" alt="Cubone 2">
           </div>
           <div>
@@ -408,8 +441,8 @@
         <div class="producto">
           <h3>Dragon pasador</h3>
           <div class="img-grid-2x2">
-            <img src="assets/dragon.jpg" alt="calavera 1">
-            <img src="assets/dragon2.jpg" alt="calaveras2 2">
+            <img src="assets/dragon.jpg" alt="dragon 1">
+            <img src="assets/dragon2.jpg" alt="dragon 2">
           </div>
           <div>
             <div>Precio: 35 Bs</div>
@@ -442,6 +475,7 @@
             <div>Precio: 60 Bs.</div>
           </div>
         </div>
+
         <!-- NUEVOS PRODUCTOS -->
         <div class="producto">
           <h3>Perro Alaskan Malamute</h3>
@@ -470,20 +504,6 @@
       </div>
     </section>
 
-    <!-- Contacto -->
-    <section>
-  <h2>Contacto</h2>
-  <p><strong>Cotización gratuita para nuevos diseños:</strong> 
-    <a href="https://wa.me/59169707171" target="_blank" rel="noopener">+591 69707171</a> 
-    (Ing. Alfredo Mancilla, dueño de Whisker Works 3D)
-  </p>
-  <p>Ubicación: La Paz, zona Obrajes.</p>
-  <p><strong>Envíos a otros departamentos:</strong> disponibilidad y costos a confirmar vía WhatsApp.</p>
-  <hr>
-  <a href="https://wa.me/59168847444" target="_blank" rel="noopener">+591 68847444</a> 
-    (Joaquín Mancilla, creador de la página web)
-</section>
-
   </main>
 
   <!-- ========= PIE DE PÁGINA ========= -->
@@ -498,6 +518,7 @@
       <path d="M23.472 19.339c-.397-.199-2.35-1.158-2.713-1.29-.363-.133-.627-.199-.892.199-.264.398-1.022 1.29-1.253 1.555-.231.265-.463.298-.86.099-.397-.199-1.678-.619-3.198-1.974-1.182-1.055-1.98-2.36-2.213-2.758-.231-.398-.025-.613.174-.812.179-.178.398-.463.596-.694.199-.231.265-.398.398-.663.133-.265.066-.497-.033-.696-.099-.199-.892-2.155-1.221-2.951-.322-.773-.649-.668-.892-.68-.231-.01-.497-.012-.763-.012-.265 0-.696.099-1.06.497-.363.398-1.39 1.357-1.39 3.312 0 1.955 1.424 3.844 1.623 4.112.199.265 2.803 4.282 6.793 5.837.951.327 1.693.522 2.272.668.955.229 1.825.197 2.513.12.767-.085 2.35-.96 2.683-1.887.331-.927.331-1.721.231-1.887-.099-.166-.363-.265-.76-.464z" fill="#fff"/>
     </svg>
   </a>
+
   <!-- ========= LIGHTBOX ========= -->
   <div id="lightbox-overlay" class="lightbox-overlay" hidden>
     <button class="lightbox-close" aria-label="Cerrar">&times;</button>
