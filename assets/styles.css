@@ -118,17 +118,78 @@ select {
   flex-wrap: wrap;
 }
 
-.navbar a {
+.navbar > a,
+.nav-dropdown > summary {
   color: #ffffff;
   border-radius: 999px;
   font-size: 0.92rem;
   padding: 0.55rem 0.85rem;
 }
 
-.navbar a:hover,
-.navbar a[aria-current="page"] {
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown > summary::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0.28rem solid transparent;
+  border-right: 0.28rem solid transparent;
+  border-top: 0.34rem solid currentColor;
+  transition: transform 0.18s ease;
+}
+
+.nav-dropdown[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.navbar > a:hover,
+.navbar > a[aria-current="page"],
+.nav-dropdown > summary:hover,
+.nav-dropdown[open] > summary {
   color: #1d140e;
   background: var(--brand);
+}
+
+.nav-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: 0;
+  z-index: 300;
+  display: grid;
+  min-width: 190px;
+  padding: 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 18px 45px rgba(22, 22, 22, 0.18);
+}
+
+.nav-menu a {
+  color: var(--ink);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  padding: 0.55rem 0.65rem;
+  white-space: nowrap;
+}
+
+.nav-menu a:hover {
+  color: var(--brand-dark);
+  background: var(--surface-soft);
 }
 
 .hero {
@@ -878,7 +939,8 @@ button.button:hover {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .navbar a {
+  .navbar > a,
+  .nav-dropdown > summary {
     display: inline-flex;
     justify-content: center;
     min-width: 0;
@@ -886,6 +948,28 @@ button.button:hover {
     padding: 0.45rem 0.35rem;
     text-align: center;
     font-size: 0.82rem;
+  }
+
+  .nav-dropdown {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .nav-dropdown > summary {
+    width: 100%;
+  }
+
+  .nav-menu {
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0.25rem;
+    box-shadow: none;
+  }
+
+  .nav-menu a {
+    text-align: center;
+    white-space: normal;
   }
 
   h1 {
