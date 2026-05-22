@@ -347,22 +347,5 @@
 
   <script src="assets/site.js" defer></script>
   <script type="module" src="assets/catalogo.js"></script>
-ox-overlay');
-          const lightboxImg = document.getElementById('lightbox-img');
-          lightboxImg.src = this.src;
-          lightboxImg.alt = this.alt;
-          overlay.hidden = false;
-        });
-      });
-      
-      document.querySelector('.lightbox-close').onclick = function() {
-        document.getElementById('lightbox-overlay').hidden = true;
-      };
-      
-      document.getElementById('lightbox-overlay').onclick = function(e) {
-        if(e.target === this) this.hidden = true;
-      };
-    });
-  </script>
 </body>
 </html>
